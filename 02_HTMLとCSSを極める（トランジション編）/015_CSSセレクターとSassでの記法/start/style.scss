@@ -1,0 +1,28 @@
+.parent {
+    color: blue;
+
+    & > .element {
+        color: purple;
+
+        &.second-child {
+            color: black;
+        }
+    }
+}
+
+.element {
+    color: yellow;
+}
+
+// .child {
+//     color: purple;
+// }
+
+.second-child {
+    color: black;
+    // 詳細度が低いので適用されない
+}
+
+/* 「>」は子要素に適用 */
+/* 「半角スペース」はHTML内に該当する属性全てに適用 */
+/* 「半角スペースなし」は両属性どちらも持つ要素のみに適用 */

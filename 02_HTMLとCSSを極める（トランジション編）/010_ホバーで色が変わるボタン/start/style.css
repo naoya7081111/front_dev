@@ -1,0 +1,23 @@
+#container {
+  text-align: center;
+}
+
+.btn {
+  background-color: #fff;
+  color: black;
+  border: 1px solid black;
+  padding: 10px 40px;
+  /* font-weight 100~900 */
+  font-weight: 600;
+  cursor: pointer;
+  margin: 50px 0;
+  /* transition: all 0.4s ease 0.3s; */
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+/*# sourceMappingURL=style.css.map */
