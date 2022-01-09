@@ -26,3 +26,9 @@ div {
   height: 80px;
   background-color: violet;
 }
+
+// position: absolute;を指定した場合、前にあるposition: relative;を基準に位置を変える
+// z-indexはposition: static;以外で適用される
+// z-indexをautoに設定すると、一番下になる
+// position: fixed;に設定するとウインドウ基準に固定する（ヘッダーなどで使うやつ）
+// positon: sticky;を設定すると、ウインドウスクロールで引っかかるようなデザインにできる overflow: hidden;が親要素にあった場合、stickyは効かなくなる

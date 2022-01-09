@@ -3,4 +3,19 @@
   height: 100px;
   margin: 0 auto;
   background-color: orangered;
+  // 移動
+  // transform: translateY(100%);
+
+  // ローテーション
+  // transform: rotate(-30deg);
+  // transform-origin: center center;
+
+  // skew
+  // transform: skew(-30deg);
+  // transform-origin: center center;
+
+  // scale
+  transform: translateX(20px) scale(2, 0.1);
+  transform-origin: center center;
+
 }
