@@ -6,15 +6,24 @@
 
 .child {
   background-color: orange;
-  width: 100px;
-  height: 100px;
+  // width: 100px;
+  // height: 100px;
   font-weight: 600;
+  flex-grow: 1;
+  flex-basis: 300px;
 }
+.child.v1 {
+  flex-shrink: 0;
+}
+
 .child.v2 {
   background-color: palevioletred;
+  flex-grow: 1;
+  flex-basis: 300px;
 }
 .child.v3 {
   background-color: rebeccapurple;
+  flex-grow: 2;
 }
 
 /**
@@ -23,6 +32,8 @@
 /* インライン要素に対して */
 // .parent {
 //   text-align: left;
+//   letter-spacing: -6px; //inline
+
 // }
 // .child {
 //     display: inline-block;
@@ -32,6 +43,7 @@
 // .parent {
 // }
 // .child {
+//   width: 100px;
 //     margin: 0 auto;
 // }
 
@@ -42,15 +54,17 @@
 //   position: relative;
 // }
 // .child {
-//   position: absolute;
+//   position: absolute; //要素を重ねたい場合
 //   top: 50%;
 //   left: 50%;
 //   transform: translate(-50%, -50%);
 // }
 
-// .parent {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-start;
-//   align-items: flex-end;
-// }
+.parent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}
