@@ -1,0 +1,56 @@
+// 状態セレクター
+a {
+    color: orange;
+
+    // クリックされた
+    &:visited {
+        color: blue;
+    }
+
+    // ホバーされた
+    &:hover {
+        color: red;
+    }
+
+    // 焦点にあたっている
+    &:focus {
+        color: green;
+    }
+
+    // クリックされた最中
+    &:active {
+        color: purple;
+    }
+}
+
+// 何番目指定セレクター
+div {
+    & span {
+        color: olive;
+
+        &:nth-of-type(1) {
+            color: red;
+        }    
+
+        &:nth-of-type(2) {
+            color: orange;
+        }    
+
+        &:nth-child(3) {
+            color: purple;
+        }    
+
+        &:first-child {
+            font-weight: bold;
+        }
+
+        &:last-child {
+            font-weight: bold;
+        }
+
+        &:not(.cls) {
+            font-size: 36px;
+        }
+
+    }
+}
