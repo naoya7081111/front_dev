@@ -3,10 +3,12 @@ const obj = {
     last_name: 'Code',
     printFullName: function () {
         console.log(this);
+        const _that = this;
 
         window.setTimeout(function () {
             console.log(this);
-        });
+            console.log(_that);
+        }.bind(this));
     }
 }
 
