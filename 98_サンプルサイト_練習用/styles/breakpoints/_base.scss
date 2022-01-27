@@ -45,3 +45,36 @@ img {
     margin: 0 auto;
     max-width: $contentMaxWidth;
 }
+
+.main-title {
+    @extend .font-lg;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.sub-title {
+    @extend .font-sm;
+    color: $cSubtitle;
+}
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.houses {
+    @extend .content-width;
+
+    &__inner {
+        @extend .flex;
+    }
+
+    &__title {
+        @extend .font-lr;
+        @extend .mb-sm;
+    }
+
+    &__btn {
+        text-align: center;
+        flex-basis: 100%;
+    }
+}
