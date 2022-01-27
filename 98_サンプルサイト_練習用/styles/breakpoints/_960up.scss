@@ -28,3 +28,14 @@ body {
 .pb-lg {
     padding-bottom: 150px !important;
 }
+
+.popular {
+
+    &__item {
+        flex-basis: 25%;
+    }
+
+    &__img {
+        height: 335px;
+    }
+}
