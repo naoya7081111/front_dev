@@ -50,6 +50,7 @@ img {
     @extend .font-lg;
     font-weight: bold;
     margin-bottom: 0;
+    display: block;
 }
 
 .sub-title {
@@ -62,6 +63,68 @@ img {
 }
 .purple {
     color: $cWineRed;
+}
+
+#content {
+    padding-top: $navheight;
+}
+
+#container {
+    transition: transform 0.5s, box-shadow 0.5s;
+    background-color: $cWhite;
+    position: relative;
+    z-index: 10;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $navheight;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+
+    &.triggered {
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 10px 0 25px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    &__nav {
+        display: none;
+    }
+
+    &__ul {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    &__li {
+        margin-left: 20px;
+
+        & a {
+            color: $cBlack;
+            text-decoration: none !important;
+            text-transform: uppercase;
+        }
+    }
+
+    & .logo {
+        font-size: 38px;
+        justify-content: center;
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @extend .content-width;
+    }
 }
 
 .travel {
@@ -181,5 +244,51 @@ img {
             height: 100%;
             width: 100%;
         }
+    }
+}
+
+.logo {
+    font-size: 42px;
+    display: flex;
+
+    &__img {
+        width: 0.7em;
+    }
+
+    &__world {
+        color: $cWineRed;
+    }
+}
+
+.footer {
+    padding: 60px 0;
+    @extend .content-width;
+
+    &__nav {
+        @extend .flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__ul {
+        @extend .flex;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    &__li {
+        padding: 0;
+        margin: 10px;
+
+        & a {
+            color: $cSubtitle;
+        }
+    }
+
+    & .logo {
+        font-size: 38px;
+        justify-content: center;
     }
 }
