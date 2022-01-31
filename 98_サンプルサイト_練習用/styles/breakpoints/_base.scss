@@ -65,10 +65,6 @@ img {
     color: $cWineRed;
 }
 
-#content {
-    padding-top: $navheight;
-}
-
 #main-content {
     position: relative;
     z-index: 0;
@@ -139,6 +135,7 @@ main {
 
 .travel {
     @extend .content-width;
+    @extend .mb-lg;
 
     &__inner {
         @extend .flex;
@@ -156,13 +153,6 @@ main {
             background-color: $cBlack;
             transform: translateY(-50%) scaleX(0);
             transition: transform 0.3s ease 1.6s;
-        }
-
-        &.inview {
-            &::before {
-                transform: translateY(-50%);
-                transform-origin: right;
-            }
         }
     }
     
@@ -190,11 +180,19 @@ main {
 
     &__texts {
         @extend .pb-sm;
+
+        &.inview {
+            & .travel__title::before {
+                transform: translateY(-50%);
+                transform-origin: right;
+            }
+        }
     }
 }
 
 .houses {
     @extend .content-width;
+    @extend .mb-lg;
 
     &__inner {
         @extend .flex;
@@ -243,6 +241,7 @@ main {
     &__btn {
         text-align: center;
         flex-basis: 100%;
+        @extend .mb-lg;
     }
     &__img {
         height: 150px;
@@ -308,17 +307,22 @@ main {
     position: fixed;
     top: 70%;
     transform: translateY(-50%);
+    transition: all 0.3s ease-in;
 
-    & a,
-    & span {
+    & .tween-animate-title {
         color: $cBlack;
         text-decoration: none !important;
         margin: 0 40px;
         vertical-align: middle;
+        letter-spacing: 2px;
     }
 
     &.left {
-        left: 50px;
+        left: -50px;
+
+        &.inview {
+            left: 50px;
+        }
 
         & .side__inner {
             transform-origin: top left;
@@ -327,7 +331,11 @@ main {
     }
 
     &.right {
-        right: 50px;
+        right: -50px;
+
+        &.inview {
+            right: 50px;
+        }
 
         & .side__inner {
             transform-origin: top right;

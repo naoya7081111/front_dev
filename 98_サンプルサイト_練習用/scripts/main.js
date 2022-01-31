@@ -1,18 +1,34 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const hero = new HeroSlider('.swiper-container');
-    hero.start();
+    const main = new Main();
+});
 
-    const cb = function (el, inview) {
-        if(inview) {
-            const ta = new TweenTextAnimation(el);
-            ta.animate();
-        }
+class Main {
+    constructor() {
+        this.header = document.querySelector('.header');
+        this.sides = document.querySelectorAll('.side');
+        this._observers = [];
+        this._init();
     }
 
-    const so = new ScrollObserver('.tween-animate-title', cb);
+    set setobservers(val) {
+        this._observers.push(val);
+    }
 
+    get getobservers() {
+        return this._observers;
+    }
 
-    const _inviewAnimation = function(el, inview) {
+    _init() {
+        new MobileMenu();
+        this.hero = new HeroSlider('.swiper-container');
+        Pace.on('done', this._paceDone.bind(this));
+    }
+
+    _paceDone() {
+        this._scrollInit();
+    }
+
+    _inviewAnimation(el, inview) {
         if(inview) {
             el.classList.add('inview');
         } else {
@@ -20,21 +36,47 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    const so2 = new ScrollObserver('.cover-slide', _inviewAnimation);
-
-
-    const header = document.querySelector('.header');
-    const _navAnimation = function(el, inview) {
+    _navAnimation(el, inview) {
         if(inview) {
-            header.classList.remove('triggered');
+            this.header.classList.remove('triggered');
         } else {
-            header.classList.add('triggered');
+            this.header.classList.add('triggered');
         }
     }
 
-    const so3 = new ScrollObserver('.nav-trigger', _navAnimation, {once: false});
+    _sideAnimation(el, inview) {
+        if(inview) {
+            this.sides.forEach(side => {
+                side.classList.add('inview');
+            })
+        } else {
+            this.sides.forEach(side => {
+                side.classList.remove('inview');
+            })
+        }
+    }
 
-    new MobileMenu();
+    _textAnimation(el, inview) {
+        if(inview) {
+            const ta = new TweenTextAnimation(el);
+            ta.animate();
+        }
+    }
 
-});
-
+    _toggleSlideAnimation(el, inview) {
+        if(inview) {
+            this.hero.start();
+        } else {
+            this.hero.stop();
+        }
+    }
+    _scrollInit() {
+        this.setobservers = new ScrollObserver('.nav-trigger', this._navAnimation.bind(this), {once: false})
+        this.setobservers = new ScrollObserver('.cover-slide', this._inviewAnimation)
+        this.setobservers = new ScrollObserver('.tween-animate-title', this._textAnimation);
+        this.setobservers = new ScrollObserver('.swiper-container', this._toggleSlideAnimation.bind(this), {once: false});
+        this.setobservers = new ScrollObserver('.appear', this._inviewAnimation);
+        this.setobservers = new ScrollObserver('#main-content', this._sideAnimation.bind(this), {once: false, rootMargin: "-300px 0px"});
+        // console.log(this.getobservers); //getが呼ばれる
+    }
+}
